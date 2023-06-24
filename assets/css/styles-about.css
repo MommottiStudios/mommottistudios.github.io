@@ -1,0 +1,492 @@
+/* global options */
+
+* {
+    margin: 0;
+    padding: 0;
+    border:0;
+    outline:0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* sticky menu */
+
+.sticky {
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+/* nav section */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15%;
+    height: 75px;
+    line-height: 75px;
+    background: #555555;
+    position: sticky;
+}
+
+nav .navbar-brand {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: .5px;
+}
+
+nav .nav-list {
+    display: flex;
+}
+
+nav .nav-list .nav-item {
+    cursor: pointer;
+    height: 100%;
+    padding: 0 30px;
+    transition: .4s;
+}
+
+nav .nav-list .nav-item:hover {
+    background: #b3aca7;
+  }
+
+
+nav .nav-list .nav-link {
+    color: #f1f1f1;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav .navbar-toggler {   /* hamburger menu (mobile first)*/
+  display: none;
+  height: min-content;
+  margin: 18px -10px 0 0;
+  cursor: pointer;
+}
+
+nav .navbar-toggler .bar {
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 10%;
+  transition: .4s;
+}
+
+input#toggle {
+  display: none;
+}
+
+input:checked ~ nav .nav-list {
+  transform: translateY(0);
+}
+
+input:checked ~ nav .navbar-toggler {
+  margin-top: 35px;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(1) {
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(2) {
+ display: none;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+
+/* wordcloud section */
+
+.wordcloud {
+  width: 100vw;
+  height: 40vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  /* gap: 5px; */
+  width: 100%;
+  grid-template:
+  '. . . Information Documentation Documentation Documentation Documentation'
+  'Computer Computer Computer Information Coding Debugging Learning Testing'
+  '. Readability Software Information Coding Debugging Learning Design     '
+  '. . Software Information Programming Debugging Learning Design'
+  '. . Software Information Algorithm Debugging Learning Design'
+  '. . . Information . . Learning .';
+}
+
+.wordcloud > div {
+  color: #c9e4ee;
+}
+
+/* twice the size, bold and different color for each second word */
+.wordcloud :nth-child(2n) {
+  font-size: 1rem;
+  color: #38aecc;
+  font-weight: bold;
+}
+/* vertical orientation and different color for each third word */
+.wordcloud :nth-child(3n) {
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: vertical-lr;
+  color: #0090c1;
+}
+/* triple size and different color for each fourth word */
+.wordcloud :nth-child(4n) {
+  font-size: 1rem;
+  color: #70c7fd;
+}
+/* quadruple size and different color for each fifth word */
+.wordcloud :nth-child(5n) {
+  font-size: 2rem;
+  color: #046e8f;
+  font-weight:400;
+}
+
+#Programming {
+  grid-area: Programming;
+}
+#Algorithm {
+  grid-area: Algorithm;
+}
+#Software {
+  grid-area: Software;
+}
+#Documentation {
+  grid-area: Documentation;
+}
+#Coding {
+  grid-area: Coding;
+}
+#Information {
+  grid-area: Information;
+}
+#Testing {
+  grid-area: Testing;
+}
+#Computer {
+  grid-area: Computer;
+}
+#Debugging {
+  grid-area: Debugging;
+}
+#Design {
+  grid-area: Design;
+}
+#Readability {
+  grid-area: Readability;
+}
+#Learning {
+  grid-area: Learning;
+}
+
+/* parallax section */
+
+main {
+    height: 92vh;
+    overflow-x: clip;
+    overflow-y: auto; 
+    perspective: 2px;
+  }
+  
+  section {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:  0 30;
+    color: white;
+  }
+  
+  .no-parallax {
+    background-color: #111;
+    z-index: 999;
+  }
+  
+  section h1 {
+    text-align: center;
+    font-size: rem;
+    /* font-family: sans-serif; */
+    font-size: 8rem;
+  }
+
+  section h2 {
+    text-align: center;
+    font-size: rem;
+    /* font-family: sans-serif; */
+    font-size: 3rem;
+  }
+  
+  .parallax h1 {
+    /* width: 60%; */
+    font-size: 5rem;
+  }
+  
+  .parallax::after {    /* parallax animation */
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(-1px) scale(1.5);
+    background-size: 100%;
+    z-index: -1;
+  }
+
+  .bg1 h2 {
+    font-size: 3rem;
+  }
+  
+  .bg1::after {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/media/bg-2.jpg");
+    background-size: cover;
+  }
+
+  .bg2::after {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/media/bg-1.jpeg");
+    background-size: cover;
+  }
+
+  .bg3::after {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/media/bg-3.jpg");
+    background-size: cover;
+  }
+
+  .bg4::after {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/media/bg-4.jpeg");
+    background-size: cover;
+  }
+
+
+/* ----- social icons ----- */
+
+.social-icons{
+  height: 10vh;
+	padding:30px;
+	background-color:black;
+  text-align: center;
+}
+.social-icons a{
+	color:#fff;
+  line-height:30px;
+  font-size:30px;
+  margin: 0 5px;
+  text-decoration:none;
+  
+}
+.social-icons a i{
+	line-height:30px;
+  font-size:30px;
+  /* -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1); 
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1); 
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1); */
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+.social-icons a:hover i{
+  box-shadow: 0px 0px 150px #000000;
+  z-index: 2;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.5);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.5);   
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.5);
+  transition: all 200ms ease-in;
+  transform: scale(1.5);
+}
+
+/* ----- presentazione section ----- */
+
+.presentazione {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    height: 40vh;
+}
+
+/* ----- footer section ----- */
+
+.footer {
+  height: 5vw;
+}
+
+/* ----- media queries ----- */
+
+@media (max-width: 935px) {
+    
+    nav {
+        padding: 0 2rem;
+    }
+
+    nav .nav-list .nav-item {
+        padding: 0 20px;
+    }
+}
+
+
+@media (min-width: 675px) {
+  .progress-bar {
+    width:50vw;
+  }
+}
+
+@media (max-width: 675px) {
+
+    nav {
+        display: flex;
+        z-index: 999;
+    }
+
+   nav .nav-list {
+        display: flex; /* posiziona .nav-list in verticale */
+        flex-direction: column;
+        position: absolute; 
+        background: #404040;
+        width: 100%;
+        top: 75px;
+        left: 0;
+        transform: translateX(-100%); 
+        z-index: 1; /* !porta .nav-list sotto nav */ 
+        transition: .6s;
+        }
+
+    nav .nav-list .nav-item {
+        padding-left: 35px;
+    }
+
+    nav .navbar-toggler {
+        display: flex !important;
+        flex-direction: column;
+    }
+  }
+
+  @media (min-width: 675px) {
+    .wordcloud {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      gap: 5px;
+      width: 100%;
+      grid-template:
+      '. . . Information Documentation Documentation Documentation Documentation'
+      'Computer Computer Computer Information Coding Debugging Learning Testing'
+      '. Readability Software Information Coding Debugging Learning Design     '
+      '. . Software Information Programming Debugging Learning Design'
+      '. . Software Information Algorithm Debugging Learning Design'
+      '. . . Information . . Learning .';
+  }
+  
+  /* twice the size, bold and different color for each second word */
+  .wordcloud :nth-child(2n) {
+      font-size: 4rem;
+      color: #38aecc;
+      font-weight: bold;
+  }
+  /* vertical orientation and different color for each third word */
+  .wordcloud :nth-child(3n) {
+      font-size: 2rem;
+      writing-mode: vertical-lr;
+      -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: vertical-lr;
+      color: #0090c1;
+  }
+  /* triple size and different color for each fourth word */
+  .wordcloud :nth-child(4n) {
+      font-size: 4rem;
+      color: #183446;
+  }
+  /* quadruple size and different color for each fifth word */
+  .wordcloud :nth-child(5n) {
+      font-size: 5rem;
+      color: #046e8f;
+      font-weight: bold;
+  }
+}
+
+
+@media screen and (min-width: 900px) {
+  .container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: 5px;
+  width: 100%;
+  grid-template:
+  '. . . Information Documentation Documentation Documentation Documentation'
+  'Computer Computer Computer Information Coding Debugging Learning Testing'
+  '. Readability Software Information Coding Debugging Learning Design     '
+  '. . Software Information Programming Debugging Learning Design'
+  '. . Software Information Algorithm Debugging Learning Design'
+  '. . . Information . . Learning .';
+}
+
+/* twice the size, bold and different color for each second word */
+.container :nth-child(2n) {
+  font-size: 3rem;
+  color: #38aecc;
+  font-weight: bold;
+}
+/* vertical orientation and different color for each third word */
+.container :nth-child(3n) {
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: vertical-lr;
+  color: #0090c1;
+}
+/* triple size and different color for each fourth word */
+.container :nth-child(4n) {
+  font-size: 4rem;
+  color: #183446;
+}
+/* quadruple size and different color for each fifth word */
+.container :nth-child(5n) {
+  font-size: 5rem;
+  color: #046e8f;
+  font-weight: bold;
+}
+
+.social-icons {
+  height: 2vw;
+}
+
+.more a:link, a:visited, a:hover, a:active {
+    color: white;
+    text-decoration: underline;
+  }
+
+.presentazione {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 0 100;
+    height: 40vh;
+}
+
+}
+
+
